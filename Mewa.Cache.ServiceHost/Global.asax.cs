@@ -4,7 +4,9 @@ using Castle.Facilities.Logging;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Castle.Windsor.Installer;
 using Mewa.Cache.Domain.Repository;
+using Mewa.Cache.Infrastructure.Installer;
 using Mewa.Cache.Infrastructure.Repository;
 using Mewa.Cache.ServiceHost.Mappers;
 
@@ -18,6 +20,7 @@ namespace Mewa.Cache.ServiceHost
             //TODO create installer
             IWindsorContainer _container;
             _container = new WindsorContainer();
+            _container.Install(Configuration.FromAppConfig());
             _container.AddFacility<WcfFacility>()
             .Register
             (
@@ -29,6 +32,7 @@ namespace Mewa.Cache.ServiceHost
                  Component.For<ICachedElementsMapper<IEnumerable<Domain.CachedElement>>>().ImplementedBy<DomainCachedElementsMapper>()
             );
             _container.AddFacility<LoggingFacility>(m => m.UseNLog().WithConfig("NLog.config"));
+            _container.Install(new NhibernateInstaller());
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -3,6 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Mewa.Cache.Infrastructure.NHibernate;
 using Mewa.Cache.Infrastructure.NHibernate.Maps;
 using NHibernate;
 
@@ -24,10 +25,11 @@ namespace Mewa.Cache.Infrastructure.Installer
         private FluentConfiguration BuildDatabaseConfiguration(IWindsorContainer container)
         {
             //TODO Fluent configuration
-            //var connectionStringConfig = container.Resolve<IQuotationArchiveConnectionStringConfig>();
+            var connectionStringConfig = container.Resolve<ICachedElementsConnectionStringConfig>();
 
-            var config = Fluently.Configure();
-                //.Database(MsSqlConfiguration.MsSql2008.ConnectionString(connectionStringConfig.ConnectionString));
+            //TODO move to config file
+            var config = Fluently.Configure()
+                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(connectionStringConfig.ConnectionString));
 
             config.ExposeConfiguration(c => c.SetProperty("adonet.batch_size", "50"));
             //.SetProperty("transaction.factory_class", "NHibernate.Transaction.AdoNetTransactionFactory"));

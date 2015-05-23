@@ -2,10 +2,10 @@
 {
     public class CachedElement
     {
-        public long Id { get; set; }
-        public string Url { get; set; }
-        public string TagName { get; set; }
-        public string TagValue { get; set; }
-        public string Value { get; set; }
+        public virtual long Id { get; set; }
+        public virtual string Url { get; set; }
+        public virtual string TagName { get; set; }
+        public virtual string TagValue { get; set; }
+        public virtual string Value { get; set; }
     }
 }

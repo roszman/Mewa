@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NHibernate\CachedElementsConnectionStringConfig.cs" />
+    <Compile Include="NHibernate\ICachedElementsConnectionStringConfig.cs" />
     <Compile Include="Installer\NhibernateInstaller.cs" />
     <Compile Include="NHibernate\Maps\CachedElementMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
