@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.CacheService", "Mewa.CacheService\Mewa.CacheService.csproj", "{EF2868C3-FC34-4F39-9B89-226867505351}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.Cache.Domain", "Mewa.Cache.Domain\Mewa.Cache.Domain.csproj", "{63F1CA2C-F3F6-4C08-8048-2E414190E5D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EF2868C3-FC34-4F39-9B89-226867505351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF2868C3-FC34-4F39-9B89-226867505351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF2868C3-FC34-4F39-9B89-226867505351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F1CA2C-F3F6-4C08-8048-2E414190E5D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F1CA2C-F3F6-4C08-8048-2E414190E5D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F1CA2C-F3F6-4C08-8048-2E414190E5D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F1CA2C-F3F6-4C08-8048-2E414190E5D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
