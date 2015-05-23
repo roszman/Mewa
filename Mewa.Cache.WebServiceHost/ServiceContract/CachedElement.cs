@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
+﻿using System.Runtime.Serialization;
 
-namespace Mewa.Cache.ServiceHost.ServiceContract
+namespace Mewa.Cache.WebServiceHost.ServiceContract
 {
 
     // since domain object corresponding to CachedElement will not have any behaviour, i wil use CachedElement as domain object. 

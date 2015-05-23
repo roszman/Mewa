@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using Mewa.Cache.ServiceHost.ServiceContract;
+using Mewa.Cache.WebServiceHost.ServiceContract;
 
-namespace Mewa.Cache.ServiceHost.Mappers
+namespace Mewa.Cache.WebServiceHost.Mappers
 {
     public interface ICachedElementsMapper<TDomainObject>
     {

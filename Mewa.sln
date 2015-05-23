@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.Cache.Domain", "Mewa.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.Cache.Infrastructure", "Mewa.Cache.Infrastructure\Mewa.Cache.Infrastructure.csproj", "{35EFDB47-F551-468B-984E-8052C2099A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.Cache.ServiceHost", "Mewa.Cache.ServiceHost\Mewa.Cache.ServiceHost.csproj", "{F5CC4DC2-CA93-40E3-9E80-04582D2A7D43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.Cache.UnitTests", "Mewa.Cache.UnitTests\Mewa.Cache.UnitTests.csproj", "{E55BA466-9637-44FC-855B-4AE32463C2F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mewa.Cache.WebServiceHost", "Mewa.Cache.WebServiceHost\Mewa.Cache.WebServiceHost.csproj", "{F5CC4DC2-CA93-40E3-9E80-04582D2A7D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{35EFDB47-F551-468B-984E-8052C2099A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35EFDB47-F551-468B-984E-8052C2099A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35EFDB47-F551-468B-984E-8052C2099A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55BA466-9637-44FC-855B-4AE32463C2F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55BA466-9637-44FC-855B-4AE32463C2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55BA466-9637-44FC-855B-4AE32463C2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55BA466-9637-44FC-855B-4AE32463C2F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5CC4DC2-CA93-40E3-9E80-04582D2A7D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5CC4DC2-CA93-40E3-9E80-04582D2A7D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5CC4DC2-CA93-40E3-9E80-04582D2A7D43}.Release|Any CPU.ActiveCfg = Release|Any CPU

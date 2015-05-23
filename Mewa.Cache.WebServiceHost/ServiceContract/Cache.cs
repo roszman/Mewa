@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Castle.Core.Logging;
 using Mewa.Cache.Domain.Repository;
-using Mewa.Cache.ServiceHost.Mappers;
+using Mewa.Cache.WebServiceHost.Mappers;
 
-namespace Mewa.Cache.ServiceHost.ServiceContract
+namespace Mewa.Cache.WebServiceHost.ServiceContract
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Cache" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Cache.svc or Cache.svc.cs at the Solution Explorer and start debugging.

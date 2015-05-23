@@ -2,7 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Mewa.Cache.ServiceHost.Installers
+namespace Mewa.Cache.WebServiceHost.Installers
 {
     public class CacheServiceHostInstaller : IWindsorInstaller
     {

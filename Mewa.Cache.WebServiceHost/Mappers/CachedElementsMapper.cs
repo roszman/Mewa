@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Mewa.Cache.Domain;
 
-namespace Mewa.Cache.ServiceHost.Mappers
+namespace Mewa.Cache.WebServiceHost.Mappers
 {
     //TODO change IEnumerable<CachedElement> to CachedElements class
-    public class DomainCachedElementsMapper : ICachedElementsMapper<IEnumerable<CachedElement>>
+    public class CachedElementsMapper : ICachedElementsMapper<IEnumerable<CachedElement>>
     {
         //TODO testy mapera
         public IEnumerable<ServiceContract.CachedElement> Map(
