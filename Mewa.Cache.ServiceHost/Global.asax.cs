@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
-using Castle.Core.Logging;
 using Castle.Facilities.Logging;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Mewa.Cache.Domain.Repository;
 using Mewa.Cache.Infrastructure.Repository;
 using Mewa.Cache.ServiceHost.Mappers;
 

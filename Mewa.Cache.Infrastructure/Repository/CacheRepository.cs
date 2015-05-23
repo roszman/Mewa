@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Mewa.Cache.Domain;
+using Mewa.Cache.Domain.Repository;
 
 namespace Mewa.Cache.Infrastructure.Repository
 {

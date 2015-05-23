@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Castle.Core.Logging;
-using Mewa.Cache.Infrastructure.Repository;
+using Mewa.Cache.Domain.Repository;
 using Mewa.Cache.ServiceHost.Mappers;
 
 namespace Mewa.Cache.ServiceHost.ServiceContract
