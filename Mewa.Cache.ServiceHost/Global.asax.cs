@@ -24,6 +24,7 @@ namespace Mewa.Cache.ServiceHost
                 Component.For<ServiceContract.ICache>()
                     .ImplementedBy<ServiceContract.Cache>()
                     .AsWcfService(new DefaultServiceModel().Hosted()),
+                    //TODO move to infrastructure installer
                  Component.For<ICacheRepository>().ImplementedBy<CacheRepository>(),
                  Component.For<ICachedElementsMapper<IEnumerable<Domain.CachedElement>>>().ImplementedBy<DomainCachedElementsMapper>()
             );
