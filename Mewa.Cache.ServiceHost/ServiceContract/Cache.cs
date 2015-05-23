@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Castle.Core.Logging;
 using Mewa.Cache.Infrastructure.Repository;
 using Mewa.Cache.ServiceHost.Mappers;
 
@@ -15,11 +16,13 @@ namespace Mewa.Cache.ServiceHost.ServiceContract
         {
             _cacheRepository = cacheRepository;
             _cachedElementsMapper = cachedElementsMapper;
+            Logger = NullLogger.Instance;
         }
 
+        public ILogger Logger { get; set; }
         public IEnumerable<CachedElement> GetElements()
         {
-
+            Logger.Info("GetElements was called.");
             var elements = _cacheRepository.GetElements();
             return _cachedElementsMapper.Map(elements);
 

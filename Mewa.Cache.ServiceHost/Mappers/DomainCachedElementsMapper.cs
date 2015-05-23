@@ -3,6 +3,7 @@ using Mewa.Cache.Domain;
 
 namespace Mewa.Cache.ServiceHost.Mappers
 {
+    //TODO change IEnumerable<CachedElement> to CachedElements class
     public class DomainCachedElementsMapper : ICachedElementsMapper<IEnumerable<CachedElement>>
     {
         //TODO testy mapera

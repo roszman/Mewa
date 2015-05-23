@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using Castle.Core.Logging;
+using Castle.Facilities.Logging;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -18,6 +19,7 @@ namespace Mewa.Cache.ServiceHost
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            //TODO create installer
             IWindsorContainer _container;
             _container = new WindsorContainer();
             _container.AddFacility<WcfFacility>()
@@ -26,13 +28,10 @@ namespace Mewa.Cache.ServiceHost
                 Component.For<ServiceContract.ICache>()
                     .ImplementedBy<ServiceContract.Cache>()
                     .AsWcfService(new DefaultServiceModel().Hosted()),
-                 //Component.For<ILogger>().ImplementedBy<TextLogger>(),
                  Component.For<ICacheRepository>().ImplementedBy<CacheRepository>(),
                  Component.For<ICachedElementsMapper<IEnumerable<Domain.CachedElement>>>().ImplementedBy<DomainCachedElementsMapper>()
-                 //Component.For<IBlogService>()
-                 //         .ImplementedBy<BlogService>()
-                 //         .Named("BlogService")
             );
+            _container.AddFacility<LoggingFacility>(m => m.UseNLog().WithConfig("NLog.config"));
         }
 
         protected void Session_Start(object sender, EventArgs e)
