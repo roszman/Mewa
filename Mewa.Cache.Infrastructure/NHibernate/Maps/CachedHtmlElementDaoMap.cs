@@ -4,9 +4,9 @@ using Mewa.Cache.Infrastructure.NHibernate.Daos;
 namespace Mewa.Cache.Infrastructure.NHibernate.Maps
 {
     //TODO maybe create CachedHtmlElementDao instead of domain object
-    public class CachedHtmlMap : ClassMap<CachedHtmlElementDao>
+    public class CachedHtmlElementDaoMap : ClassMap<CachedHtmlElementDao>
     {
-        public CachedHtmlMap()
+        public CachedHtmlElementDaoMap()
         {
             Table("CachedHtmlElements");//TODO to constant
             Id(ce => ce.Id); //TODO add sequence and generator
@@ -28,18 +28,6 @@ namespace Mewa.Cache.Infrastructure.NHibernate.Maps
                 che.Map(m => m.InnerHtml).Column("HtmlElementInnerHtml");
                 che.Map(m => m.LastRefreshDate).Column("LastRefreshDate");
             });
-            //Map(ce => ce.CachedHtmlElement.HtmlElementAddress.Url)
-                //.Column("Url");
-            //Map(ce => ce.CachedHtmlElement.HtmlElementAddress.HtmlTag.Name)
-                //.Column("HtmlElementName");
-            //Map(ce => ce.CachedHtmlElement.HtmlElementAddress.HtmlTag.Attribute.Name)
-            //    .Column("HtmlElementAttributeName");
-            //Map(ce => ce.CachedHtmlElement.HtmlElementAddress.HtmlTag.Attribute.Value)
-            //    .Column("HtmlElementAttributeValue");
-            //Map(ce => ce.CachedHtmlElement.InnerHtml.Value)
-            //    .Column("HtmlElementInnerHtml");
-            //Map(ce => ce.CachedHtmlElement.LastRefreshDate)
-                //.Column("LastRefreshDate");
         }
     }
 }
