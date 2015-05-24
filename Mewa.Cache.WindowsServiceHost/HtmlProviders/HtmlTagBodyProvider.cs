@@ -1,6 +1,6 @@
 ﻿using HtmlAgilityPack;
 
-namespace Mewa.Cache.WindowsServiceHost
+namespace Mewa.Cache.WindowsServiceHost.HtmlProviders
 {
     public static class HtmlTagBodyProvider
     {

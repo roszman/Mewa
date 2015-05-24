@@ -1,4 +1,5 @@
 ﻿using Mewa.Cache.WindowsServiceHost;
+using Mewa.Cache.WindowsServiceHost.HtmlProviders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Mewa.Cache.UnitTests.CacheService

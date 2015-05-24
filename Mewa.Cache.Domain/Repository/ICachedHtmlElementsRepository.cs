@@ -6,6 +6,8 @@ namespace Mewa.Cache.Domain.Repository
     public interface ICachedHtmlElementsRepository
     {
         IEnumerable<CachedHtmlElement> GetCachedElements();
-        void Save(CachedHtmlElement cachedHtmlElement);
+        void Update(CachedHtmlElement cachedHtmlElement);
+        void Add(CachedHtmlElement cachedHtmlElement);
+        IEnumerable<CachedHtmlElement> GetAllHtmlElements();
     }
 }

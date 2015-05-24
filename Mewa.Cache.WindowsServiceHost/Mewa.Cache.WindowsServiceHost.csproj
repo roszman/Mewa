@@ -76,8 +76,8 @@
     <Compile Include="HtmlCacheService.Designer.cs">
       <DependentUpon>HtmlCacheService.cs</DependentUpon>
     </Compile>
-    <Compile Include="HtmlStringProvider.cs" />
-    <Compile Include="HtmlTagBodyProvider.cs" />
+    <Compile Include="HtmlProviders\HtmlStringProvider.cs" />
+    <Compile Include="HtmlProviders\HtmlTagBodyProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
