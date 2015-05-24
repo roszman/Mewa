@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
 using Castle.Facilities.Logging;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using Mewa.Cache.Domain.Model;
 using Mewa.Cache.Domain.Repository;
 using Mewa.Cache.Infrastructure.Installer;
 using Mewa.Cache.Infrastructure.Repository;
@@ -33,8 +30,8 @@ namespace Mewa.Cache.WebServiceHost
                     .ImplementedBy<ServiceContract.Cache>()
                     .AsWcfService(new DefaultServiceModel().Hosted()),
                 //TODO move to infrastructure installer
-                 Component.For<ICacheRepository>().ImplementedBy<CacheRepository>(),
-                 Component.For<ICachedElementsMapper<IEnumerable<Domain.CachedElement>>>().ImplementedBy<CachedElementsMapper>()
+                 Component.For<ICachedHtmlElementsRepository>().ImplementedBy<CachedHtmlElementsRepository>(),
+                 Component.For<ICachedElementsMapper<IEnumerable<CachedHtmlElement>>>().ImplementedBy<CachedElementsMapper>()
             );
             _container.AddFacility<LoggingFacility>(m => m.UseNLog().WithConfig("NLog.config"));
             _container.Install(new NhibernateInstaller());

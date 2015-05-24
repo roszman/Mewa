@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CachedElement.cs" />
+    <Compile Include="Model\CachedHtmlElement.cs" />
+    <Compile Include="Model\HtmlTag.cs" />
+    <Compile Include="Model\HtmlTagAttribute.cs" />
+    <Compile Include="Model\HtmlElementAdress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ICacheRepository.cs" />
   </ItemGroup>

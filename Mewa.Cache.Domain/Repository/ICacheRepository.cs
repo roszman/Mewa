@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Mewa.Cache.Domain.Model;
 
 namespace Mewa.Cache.Domain.Repository
 {
-    public interface ICacheRepository
+    public interface ICachedHtmlElementsRepository
     {
-        IEnumerable<CachedElement> GetElements();
+        IEnumerable<CachedHtmlElement> GetElements();
+        void Save(CachedHtmlElement cachedHtmlElement);
     }
 }

@@ -8,21 +8,35 @@ namespace Mewa.Cache.WebServiceHost.ServiceContract
     [DataContract]
     public class CachedElement
     {
-        public CachedElement(string tagName, string tagValue, string url, string value)
+        //TODO remove constructor ?
+        public CachedElement(
+            string url, 
+            string tagName, 
+            string tagAttributeName, 
+            string tagAttributeValue, 
+            string innerHtml)
         {
             TagName = tagName;
-            TagValue = tagValue;
+            TagAttributeName = tagAttributeName;
+            TagAttributeValue = tagAttributeValue;
             Url = url;
-            Value = value;
+            InnerHtml = innerHtml;
+        }
+
+        public CachedElement()
+        {
         }
 
         [DataMember]
         public string Url { get; set; }
         [DataMember]
         public string TagName { get; set; }
+
+        public string TagAttributeName { get; set; }
+
         [DataMember]
-        public string TagValue { get; set; }
+        public string TagAttributeValue { get; set; }
         [DataMember]
-        public string Value { get; set; }
+        public string InnerHtml { get; set; }
     }
 }

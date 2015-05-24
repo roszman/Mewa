@@ -60,11 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NHibernate\CachedElementsConnectionStringConfig.cs" />
+    <Compile Include="NHibernate\Daos\CachedHtmlElementDao.cs" />
     <Compile Include="NHibernate\ICachedElementsConnectionStringConfig.cs" />
     <Compile Include="Installer\NhibernateInstaller.cs" />
-    <Compile Include="NHibernate\Maps\CachedElementMap.cs" />
+    <Compile Include="NHibernate\Maps\CachedHtmlMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\CacheRepository.cs" />
+    <Compile Include="Repository\CachedHtmlElementsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mewa.Cache.Domain\Mewa.Cache.Domain.csproj">

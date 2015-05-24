@@ -9,12 +9,12 @@ namespace Mewa.Cache.WebServiceHost.ServiceContract
     // NOTE: In order to launch WCF Test Client for testing this service, please select Cache.svc or Cache.svc.cs at the Solution Explorer and start debugging.
     public class Cache : ICache
     {
-        private readonly ICacheRepository _cacheRepository;
-        private readonly ICachedElementsMapper<IEnumerable<Domain.CachedElement>> _cachedElementsMapper;
+        private readonly ICachedHtmlElementsRepository _cachedHtmlElementsRepository;
+        private readonly ICachedElementsMapper<IEnumerable<Domain.Model.CachedHtmlElement>> _cachedElementsMapper;
 
-        public Cache(ICacheRepository cacheRepository, ICachedElementsMapper<IEnumerable<Domain.CachedElement>> cachedElementsMapper)
+        public Cache(ICachedHtmlElementsRepository cachedHtmlElementsRepository, ICachedElementsMapper<IEnumerable<Domain.Model.CachedHtmlElement>> cachedElementsMapper)
         {
-            _cacheRepository = cacheRepository;
+            _cachedHtmlElementsRepository = cachedHtmlElementsRepository;
             _cachedElementsMapper = cachedElementsMapper;
             Logger = NullLogger.Instance;
         }
@@ -23,7 +23,7 @@ namespace Mewa.Cache.WebServiceHost.ServiceContract
         public IEnumerable<CachedElement> GetElements()
         {
             Logger.Info("GetElements was called.");
-            var elements = _cacheRepository.GetElements();
+            var elements = _cachedHtmlElementsRepository.GetElements();
             return _cachedElementsMapper.Map(elements);
 
         }
