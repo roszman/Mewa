@@ -22,8 +22,8 @@ namespace Mewa.Cache.WebServiceHost.ServiceContract
         public ILogger Logger { get; set; }
         public IEnumerable<CachedElement> GetElements()
         {
-            Logger.Info("GetElements was called.");
-            var elements = _cachedHtmlElementsRepository.GetElements();
+            Logger.Info("GetCachedElements was called.");
+            var elements = _cachedHtmlElementsRepository.GetCachedElements();
             return _cachedElementsMapper.Map(elements);
 
         }

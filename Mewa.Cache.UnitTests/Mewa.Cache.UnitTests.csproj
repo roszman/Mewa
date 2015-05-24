@@ -57,13 +57,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mewa.CacheService\Mewa.CacheService.csproj">
-      <Project>{EF2868C3-FC34-4F39-9B89-226867505351}</Project>
-      <Name>Mewa.CacheService</Name>
-    </ProjectReference>
+    <Content Include="CacheService\html.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CacheService\html.txt" />
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

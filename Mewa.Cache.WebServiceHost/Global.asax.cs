@@ -23,18 +23,15 @@ namespace Mewa.Cache.WebServiceHost
             IWindsorContainer _container;
             _container = new WindsorContainer();
             _container.Install(Configuration.FromAppConfig());
+            _container.Install(new InfrastructureInstaller());
             _container.AddFacility<WcfFacility>()
             .Register
             (
                 Component.For<ICache>()
                     .ImplementedBy<ServiceContract.Cache>()
                     .AsWcfService(new DefaultServiceModel().Hosted()),
-                //TODO move to infrastructure installer
-                 Component.For<ICachedHtmlElementsRepository>().ImplementedBy<CachedHtmlElementsRepository>(),
                  Component.For<ICachedElementsMapper<IEnumerable<CachedHtmlElement>>>().ImplementedBy<CachedElementsMapper>()
             );
-            _container.AddFacility<LoggingFacility>(m => m.UseNLog().WithConfig("NLog.config"));
-            _container.Install(new NhibernateInstaller());
         }
 
         protected void Session_Start(object sender, EventArgs e)

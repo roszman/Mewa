@@ -23,7 +23,7 @@ namespace Mewa.Cache.Infrastructure.Repository
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<CachedHtmlElement> GetElements()
+        public IEnumerable<CachedHtmlElement> GetCachedElements()
         {
             //TODO error handling
             var cachedHtmlElementDaos =  _session.

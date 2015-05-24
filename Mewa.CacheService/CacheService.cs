@@ -7,7 +7,6 @@ namespace Mewa.CacheService
 {
     public partial class CacheService : ServiceBase
     {
-        private CachedObject cachedObject;
         public CacheService(string[] args)
         {
             InitializeComponent();
@@ -38,7 +37,6 @@ namespace Mewa.CacheService
             timer.Interval = 30000; // 30 seconds
             timer.Elapsed += OnTimer;
             timer.Start();
-            cachedObject = new CachedObject();
             //zaladowac cache
         }
 
@@ -50,7 +48,7 @@ namespace Mewa.CacheService
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
             // TODO: Insert monitoring activities here.
-            eventLog1.WriteEntry("Monitoring the System " + cachedObject.GetTimeStamp(), EventLogEntryType.Information, 1);
+            eventLog1.WriteEntry("Monitoring the System ", EventLogEntryType.Information, 1);
             //odswiezyc cache
         }
         protected override void OnContinue()
@@ -58,20 +56,5 @@ namespace Mewa.CacheService
             eventLog1.WriteEntry("In OnContinue.");
         }  
     }
-
-
-    public class CachedObject
-    {
-        private static DateTime _timeStamp;
-        public CachedObject()
-        {
-            _timeStamp = DateTime.Now;
-        }
-
-
-        public DateTime GetTimeStamp()
-        {
-            return _timeStamp;
-        }
-    }
+    
 }
