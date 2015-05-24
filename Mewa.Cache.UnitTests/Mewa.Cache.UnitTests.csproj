@@ -62,6 +62,12 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mewa.Cache.WindowsServiceHost\Mewa.Cache.WindowsServiceHost.csproj">
+      <Project>{1D4392F4-796D-456C-A4D4-57B4E1A3AEA6}</Project>
+      <Name>Mewa.Cache.WindowsServiceHost</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
