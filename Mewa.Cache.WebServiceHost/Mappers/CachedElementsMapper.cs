@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Mewa.Cache.Domain;
 
 namespace Mewa.Cache.WebServiceHost.Mappers
@@ -10,19 +11,13 @@ namespace Mewa.Cache.WebServiceHost.Mappers
         public IEnumerable<ServiceContract.CachedElement> Map(
             IEnumerable<Domain.CachedElement> domainCachedElements)
         {
-            var listOfServiceCOntractElements = new List<ServiceContract.CachedElement>();
-
-            foreach (var cachedElement in domainCachedElements)
-            {
-                listOfServiceCOntractElements.Add(
-                    new ServiceContract.CachedElement(
-                        cachedElement.TagName, 
-                        cachedElement.TagValue, 
-                        cachedElement.Url, 
-                        cachedElement.Value
-                    ));
-            }
-            return listOfServiceCOntractElements;
+            return domainCachedElements.Select(cachedElement => 
+                new ServiceContract.CachedElement(
+                    cachedElement.TagName, 
+                    cachedElement.TagAttributeValue, 
+                    cachedElement.Url, 
+                    cachedElement.TagValue
+                    )).ToList();
         }
     }
 }

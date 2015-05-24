@@ -11,9 +11,10 @@ namespace Mewa.Cache.Infrastructure.NHibernate.Maps
             Table("CachedElements");//TODO to constant
             Id(ce => ce.Id); //TODO add sequence
             Map(ce => ce.TagName);
-            Map(ce => ce.TagValue);
+            Map(ce => ce.TagAttributeName);
+            Map(ce => ce.TagAttributeValue);
             Map(ce => ce.Url);
-            Map(ce => ce.Value);
+            Map(ce => ce.TagValue);
 
         }
     }

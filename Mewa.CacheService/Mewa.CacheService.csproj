@@ -35,6 +35,10 @@
     <StartupObject>Mewa.CacheService.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -53,6 +57,9 @@
     <Compile Include="CacheService.Designer.cs">
       <DependentUpon>CacheService.cs</DependentUpon>
     </Compile>
+    <Compile Include="HtmlStringProvider.cs" />
+    <Compile Include="HtmlTagBodyProvider.cs" />
+    <Compile Include="IHtmlStringProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
@@ -69,6 +76,16 @@
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mewa.Cache.WebServiceHost\Mewa.Cache.WebServiceHost.csproj">
+      <Project>{F5CC4DC2-CA93-40E3-9E80-04582D2A7D43}</Project>
+      <Name>Mewa.Cache.WebServiceHost</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

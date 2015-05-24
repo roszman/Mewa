@@ -39,6 +39,7 @@ namespace Mewa.CacheService
             timer.Elapsed += OnTimer;
             timer.Start();
             cachedObject = new CachedObject();
+            //zaladowac cache
         }
 
         protected override void OnStop()
@@ -50,6 +51,7 @@ namespace Mewa.CacheService
         {
             // TODO: Insert monitoring activities here.
             eventLog1.WriteEntry("Monitoring the System " + cachedObject.GetTimeStamp(), EventLogEntryType.Information, 1);
+            //odswiezyc cache
         }
         protected override void OnContinue()
         {

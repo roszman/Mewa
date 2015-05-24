@@ -1,0 +1,72 @@
+﻿
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome to the Seagull group</title>
+<link href="stilark/stilark_00.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="img/ico" href="favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+
+
+<body>
+<div id="container">
+	<div id="logo">
+    
+    	<img src="img/SG_logo.png" width="102" height="47" alt="Seagull logo" />
+
+  	<div id="ramme">
+    	
+        <!-- Start på svg-koden som genererer rammen rundt overskrift -->
+
+		<svg width="520" height="50">
+  			<rect width="520" height="50" style="fill:none;stroke-width:2;stroke:rgb(255,255,255)" />
+		</svg> 
+
+		 <!-- Stopp på svg-koden som genererer rammen rundt overskrift -->
+        
+    </div>
+  
+	<div id="overskrift">
+    		
+            <h1>Welcome to the Seagull Group</h1>
+  
+  	</div>
+
+ 	
+    <div id="bakgrunnsbilde">
+    	<img src="img/Bakgrunnsbilde_520.png" width="520" height="340" alt="Bakgrunnsbilde" />
+    </div>
+ 
+
+    
+    	<div id="tekst_v_kolonne">
+        
+    	<p>A world class provider of e-learning and competence management systems for the merchant shipping industry.</p>
+        <p>Our mission is to enhance maritime competence by effective training and assessment solutions and deliver value through quality and excellence in customer service.</p>
+        
+        </div>
+        
+    
+    	<div id="tekst_h_kolonne">
+        
+    	<p>A world class provider of off the shelf and bespoke e-learning and competence management systems for the oil and gas industry.</p>
+        <p>Our mission is to offer our clients best value for money by offering solutions that reduce cost, improve safety and increase knowledge.</p>
+        
+        </div>
+	    
+    	<div id="knapper">
+		<div id="knapp_1Nav">       
+    			<a href="http://www.seagull.no/home"><img src="img/knappSGM.png" width="250" height="360" alt="knappSGM" /></a>
+    		</div>
+        
+		<div id="knapp_2Nav">       
+    			<a href="http://www.mindit.no"><img src="img/knappSOG.png" width="250" height="360" alt="knappSOG" /></a>
+  		</div>
+    
+    
+
+</div>
+</body>
+</html>
