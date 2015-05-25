@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using Mewa.Cache.Infrastructure.Installer;
 using Mewa.Cache.WebUI.Admin.Castle;
 
 namespace Mewa.Cache.WebUI.Admin
@@ -17,14 +18,16 @@ namespace Mewa.Cache.WebUI.Admin
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        private static IWindsorContainer container;
+        private static IWindsorContainer _container;
 
         private static void BootstrapContainer()
         {
-            container = new WindsorContainer().Install(FromAssembly.This());
+            _container = new WindsorContainer().Install(FromAssembly.This());
 
-            var controllerFactory = new WindsorControllerFactory(container.Kernel);
+            var controllerFactory = new WindsorControllerFactory(_container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+            _container.Install(Configuration.FromAppConfig());
+            _container.Install(new InfrastructureInstaller());
         }
         protected void Application_Start()
         {
@@ -38,7 +41,7 @@ namespace Mewa.Cache.WebUI.Admin
         }
         protected void Application_End()
         {
-            container.Dispose();
+            _container.Dispose();
         }
     }
 }
