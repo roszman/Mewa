@@ -1,37 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.ServiceProcess;
 using Castle.Core.Logging;
-using Castle.Windsor;
-using Castle.Windsor.Installer;
 using Mewa.Cache.Domain.Model;
 using Mewa.Cache.Domain.Repository;
-using Mewa.Cache.Infrastructure.Installer;
 using Mewa.Cache.WindowsServiceHost.HtmlProviders;
 
 namespace Mewa.Cache.WindowsServiceHost
 {
     public partial class HtmlCacheService : ServiceBase
     {
-        private IWindsorContainer _container;
-        private IEnumerable<CachedHtmlElement> cachedHtmlElements;
-        private ICachedHtmlElementsRepository cachedHtmlElementsRepository;
+        private IEnumerable<CachedHtmlElement> _cachedHtmlElements;
+        private ICachedHtmlElementsRepository _cachedHtmlElementsRepository;
         public ILogger Logger { get; set; }
-        public HtmlCacheService()
+        public HtmlCacheService(ICachedHtmlElementsRepository cachedHtmlElementsRepository)
         {
+            _cachedHtmlElementsRepository = cachedHtmlElementsRepository;
             InitializeComponent();
-            //TODO create installer
-            _container = new WindsorContainer();
-            _container.Install(Configuration.FromAppConfig());
-            _container.Install(new InfrastructureInstaller());
-            Logger = NullLogger.Instance;
         }
 
         protected override void OnStart(string[] args)
         {
             Logger.Info("Html cache service start.");
 
-            cachedHtmlElementsRepository = _container.Resolve<ICachedHtmlElementsRepository>();
-            cachedHtmlElements = cachedHtmlElementsRepository.GetAllHtmlElements();
+            _cachedHtmlElements = _cachedHtmlElementsRepository.GetAllHtmlElements();
             CheckHtmlElements();
             // Set up a timer to trigger every minute.
             StartTimer();
@@ -52,7 +43,7 @@ namespace Mewa.Cache.WindowsServiceHost
         private void CheckHtmlElements()
         {
             //TODO zalozenie ze cache laduje sie tylko podczas startu uslugi, co oznacza ze dodanie nowych elementow do skeszowania wymaga restartu
-            foreach (var cachedHtmlElement in cachedHtmlElements)
+            foreach (var cachedHtmlElement in _cachedHtmlElements)
             {
                 //Error/null handling and logging
                 var htmlString = HtmlStringProvider.GetHtmlString(cachedHtmlElement.HtmlElementAddress.Url);
@@ -66,9 +57,8 @@ namespace Mewa.Cache.WindowsServiceHost
                 if (htmlString != newHtmlString)
                 {
                     cachedHtmlElement.InnerHtml = newHtmlString;
-                    cachedHtmlElementsRepository.Update(cachedHtmlElement);
+                    _cachedHtmlElementsRepository.Update(cachedHtmlElement);
                 }
-                cachedHtmlElementsRepository.Update(cachedHtmlElement);
             }
         }
 
