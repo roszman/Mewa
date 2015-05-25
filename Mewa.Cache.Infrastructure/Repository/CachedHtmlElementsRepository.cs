@@ -41,6 +41,7 @@ namespace Mewa.Cache.Infrastructure.Repository
             {
                 CachedHtmlElement = cachedHtmlElement
             });
+            _session.Flush();
         }
 
         public IEnumerable<CachedHtmlElement> GetAllHtmlElements()
