@@ -11,32 +11,30 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>HtmlElelmentToCache</legend>
 
         @Html.HiddenFor(model => model.Id)
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Url)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Url)
+        <div class="form-group">
+            @Html.EditorFor(model => model.Url, new  { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Url)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.TagName)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TagName)
+        <div class="form-group">
+            @Html.EditorFor(model => model.TagName, new  { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.TagName)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.TagAttributeName)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TagAttributeName)
+        <div class="form-group">
+            @Html.EditorFor(model => model.TagAttributeName, new  { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.TagAttributeName)
         </div>
 
@@ -44,14 +42,13 @@
             @Html.LabelFor(model => model.TagAttributeValue)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.TagAttributeValue)
+            @Html.EditorFor(model => model.TagAttributeValue, new  { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.TagAttributeValue)
         </div>
 
         <p>
             <input type="submit" value="Save" />
         </p>
-    </fieldset>
 }
 
 <div>
