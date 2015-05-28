@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.ServiceProcess;
 using Castle.Core.Logging;
 using Mewa.Cache.Domain.Model;
@@ -23,8 +25,8 @@ namespace Mewa.Cache.WindowsServiceHost
             Logger.Info("Html cache service start.");
 
             _cachedHtmlElements = _cachedHtmlElementsRepository.GetAllHtmlElements();
-            CheckHtmlElements();
-            // Set up a timer to trigger every minute.
+            RefreshHtmlElementsCache();
+
             StartTimer();
         }
 
@@ -35,13 +37,12 @@ namespace Mewa.Cache.WindowsServiceHost
 
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
-            // TODO: Insert monitoring activities here.
-            CheckHtmlElements();
-            Logger.Info("Html cache service timer event.");
+            RefreshHtmlElementsCache();
         }
 
-        private void CheckHtmlElements()
+        private void RefreshHtmlElementsCache()
         {
+            Logger.Info("Html cache refresh start.");
             //TODO zalozenie ze cache laduje sie tylko podczas startu uslugi, co oznacza ze dodanie nowych elementow do skeszowania wymaga restartu
             foreach (var cachedHtmlElement in _cachedHtmlElements)
             {
@@ -60,14 +61,25 @@ namespace Mewa.Cache.WindowsServiceHost
                     _cachedHtmlElementsRepository.Update(cachedHtmlElement);
                 }
             }
+            Logger.Info("Html cache refreshed.");
         }
 
         private void StartTimer()
         {
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 20000; // 60 seconds
+            Logger.Info("Html cache service timer started.");
+            //TODO errors/null handling
+            int hours = Int32.Parse(ConfigurationManager.AppSettings["HourlyInterval"]);
+            var timer = new System.Timers.Timer
+            {
+                Interval = GetSecondsFromHours(hours)
+            };
             timer.Elapsed += OnTimer;
             timer.Start();
+        }
+
+        private static int GetSecondsFromHours(int hours)
+        {
+            return hours * 3600;
         }
     }
 }

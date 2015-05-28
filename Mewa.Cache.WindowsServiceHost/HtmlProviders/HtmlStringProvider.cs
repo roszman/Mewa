@@ -10,6 +10,7 @@ namespace Mewa.Cache.WindowsServiceHost.HtmlProviders
             //TODO error handling
             //TODO jeśli będzie więcej elementów to który zwrócić?
             //TODO trzeba włączyć webclienta w serwisach
+            //TODO proxy to config
             var html = String.Empty;
             using (var client = new WebClient())
             {
