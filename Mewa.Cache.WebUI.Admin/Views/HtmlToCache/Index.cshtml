@@ -1,7 +1,34 @@
-﻿@model dynamic
+﻿@model IEnumerable<HtmlElelmentToCache>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-tutaj
+<table class="table table-hover table-condensed">
+    <tr>
+        <th>Url</th>
+        <th>Html tag name</th>
+        <th>Html tag attribute name</th>
+        <th>Html tag attribute value</th>
+        <th>Tools</th>
+    </tr>
+    @foreach (var htmlElementToCache in Model)
+    {
+        <tr>
+            <td>@htmlElementToCache.Url</td>
+            <td>@htmlElementToCache.TagName</td>
+            <td>@htmlElementToCache.TagAttributeName</td>
+            <td>@htmlElementToCache.TagAttributeValue</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {htmlElementToCache.Id}, new {@class = "btn btn-primary btn-xs"})
+                @using(Html.BeginForm("Delete", "HtmlToCache", new{@class = "display-inline"})){
+
+                    @Html.Hidden("id", htmlElementToCache.Id)
+                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                }
+                @*@Html("Delete", "Delete", new {id = htmlElementToCache.Id})dd*@
+                @*<button type="button" class="btn btn-primary btn-xs">Edit</button>*@
+            </td>
+        </tr>
+    }
+</table>

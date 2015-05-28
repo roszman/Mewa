@@ -150,12 +150,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Castle\Installers\ControllersInstaller.cs" />
+    <Compile Include="Castle\Installers\WebUiAdminInstaller.cs" />
     <Compile Include="Castle\WindsorControllerFactory.cs" />
     <Compile Include="Controllers\HtmlToCacheController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\CachedElementToViewModelMapper.cs" />
+    <Compile Include="Mappers\IViewModelMapper.cs" />
     <Compile Include="Models\HtmlElelmentToCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -207,6 +209,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\HtmlToCache\Index.cshtml" />
+    <Content Include="Views\HtmlToCache\Edit.cshtml" />
+    <Content Include="Views\HtmlToCache\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

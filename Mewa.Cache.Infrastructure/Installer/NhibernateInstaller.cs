@@ -37,7 +37,7 @@ namespace Mewa.Cache.Infrastructure.Installer
             //config.Mappings(m => m.FluentMappings.Conventions.Add<ColumnNameConvention>());
             config.Mappings(
                 m =>
-                    m.FluentMappings.AddFromAssembly(typeof(CachedHtmlElementDaoMap).Assembly));
+                    m.FluentMappings.AddFromAssembly(typeof(CachedHtmlElementMap).Assembly));
             return config;
         }
     }

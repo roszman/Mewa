@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Castle.MicroKernel.ModelBuilder.Descriptors;
 using Mewa.Cache.Domain;
 using Mewa.Cache.Domain.Model;
 using Mewa.Cache.Domain.Repository;
@@ -22,25 +23,26 @@ namespace Mewa.Cache.Infrastructure.Repository
         public void Update(CachedHtmlElement cachedHtmlElement)
         {
             //TODO error/null handling and logging
-            var cachedHtmlElementDao = GetCachedHtmlElementDao(
-                cachedHtmlElement.HtmlElementAddress.Url,
-                cachedHtmlElement.HtmlElementAddress.HtmlTag.Name,
-                cachedHtmlElement.HtmlElementAddress.HtmlTag.Attribute.Name,
-                cachedHtmlElement.HtmlElementAddress.HtmlTag.Attribute.Value);
 
-            if (cachedHtmlElementDao != null)
+            if (cachedHtmlElement != null)
             {
-                UpdateCachedHtmlElement(cachedHtmlElement, cachedHtmlElementDao);
+                UpdateCachedHtmlElement(cachedHtmlElement);
             }
         }
 
         public void Add(CachedHtmlElement cachedHtmlElement)
         {
             //TODO error handling and logging
-            _session.Save(new CachedHtmlElementDao
-            {
-                CachedHtmlElement = cachedHtmlElement
-            });
+            _session.Save(cachedHtmlElement);
+            _session.Flush();
+        }
+
+        public void Delete(long id)
+        {
+            //TODO error logging
+            var cachedHtmlElement =_session.QueryOver<CachedHtmlElement>()
+                .Where(che => che.Id == id).List().FirstOrDefault();
+            _session.Delete(cachedHtmlElement);
             _session.Flush();
         }
 
@@ -48,41 +50,39 @@ namespace Mewa.Cache.Infrastructure.Repository
         {
             //TODO error handling 
             return _session
-                .QueryOver<CachedHtmlElementDao>()
-                .List()
-                .Select(ae => ae.CachedHtmlElement);
+                .QueryOver<CachedHtmlElement>()
+                .List();
 
+        }
+
+        public CachedHtmlElement GetCachedElementById(long id)
+        {
+            //todo error logging
+            return _session
+                .QueryOver<CachedHtmlElement>()
+                .Where(che => che.Id == id)
+                .List()
+                .FirstOrDefault();
         }
 
         public IEnumerable<CachedHtmlElement> GetCachedElements()
         {
             //TODO error handling
-            var cachedHtmlElementDaos =  _session.
-                QueryOver<CachedHtmlElementDao>()
-                .Where(cachedHtmlElementDao => 
-                    cachedHtmlElementDao.CachedHtmlElement.LastRefreshDate != null)
-                .List<CachedHtmlElementDao>();
-            return cachedHtmlElementDaos.Select(che => che.CachedHtmlElement);
+            var cachedHtmlElements =  _session.
+                QueryOver<CachedHtmlElement>()
+                .Where(cachedHtmlElement => 
+                    cachedHtmlElement.LastRefreshDate != null)
+                .List<CachedHtmlElement>();
+            return cachedHtmlElements;
         }
 
-        private void UpdateCachedHtmlElement(CachedHtmlElement cachedHtmlElement, CachedHtmlElementDao cachedHtmlElementDao)
+        private void UpdateCachedHtmlElement(CachedHtmlElement cachedHtmlElement)
         {
-            cachedHtmlElementDao.CachedHtmlElement.LastRefreshDate = DateTime.Now;
-            cachedHtmlElementDao.CachedHtmlElement.InnerHtml = cachedHtmlElement.InnerHtml;
+            cachedHtmlElement.LastRefreshDate = DateTime.Now;
+            cachedHtmlElement.InnerHtml = cachedHtmlElement.InnerHtml;
 
-            _session.SaveOrUpdate(cachedHtmlElementDao);
+            _session.SaveOrUpdate(cachedHtmlElement);
             _session.Flush();
-        }
-
-        private CachedHtmlElementDao GetCachedHtmlElementDao(string url, string htmlTagName, string htmlTagAttributeName, string htmlTagAttributeValue)
-        {
-            return _session.QueryOver<CachedHtmlElementDao>()
-                .Where(
-                    chdao => chdao.CachedHtmlElement.HtmlElementAddress.Url == url
-                             && chdao.CachedHtmlElement.HtmlElementAddress.HtmlTag.Name == htmlTagName
-                             && chdao.CachedHtmlElement.HtmlElementAddress.HtmlTag.Attribute.Name == htmlTagAttributeName
-                             && chdao.CachedHtmlElement.HtmlElementAddress.HtmlTag.Attribute.Value == htmlTagAttributeValue
-                ).List<CachedHtmlElementDao>().FirstOrDefault();
         }
     }
 }

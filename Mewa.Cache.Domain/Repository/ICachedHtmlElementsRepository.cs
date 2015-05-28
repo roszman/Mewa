@@ -8,6 +8,8 @@ namespace Mewa.Cache.Domain.Repository
         IEnumerable<CachedHtmlElement> GetCachedElements();
         void Update(CachedHtmlElement cachedHtmlElement);
         void Add(CachedHtmlElement cachedHtmlElement);
+        void Delete(long id);
         IEnumerable<CachedHtmlElement> GetAllHtmlElements();
+        CachedHtmlElement GetCachedElementById(long id);
     }
 }
